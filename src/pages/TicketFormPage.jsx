@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { set, useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useTickets } from "../context/TicketsContext";
 import { useEffect } from "react";
@@ -20,6 +20,10 @@ function TicketFormPage() {
         console.log(ticket);
         setValue("title", ticket.title);
         setValue("description", ticket.description);
+        setValue("dependency", ticket.dependency);
+        setValue("service", ticket.service);
+        setValue("priority", ticket.priority);
+        setValue("status", ticket.status);
         setValue("date", dayjs.utc(ticket.date).format("YYYY-MM-DD"));
       }
     };
@@ -61,6 +65,42 @@ function TicketFormPage() {
             placeholder="Description"
             {...register("description")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
+          />
+          <label htmlFor="dependency">Dependency</label>
+          <input
+            required
+            type="text"
+            placeholder="Dependency"
+            {...register("dependency")}
+            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
+            autoFocus
+          />
+          <label htmlFor="service">Service</label>
+          <input
+            required
+            type="text"
+            placeholder="Service"
+            {...register("service")}
+            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
+            autoFocus
+          />
+          <label htmlFor="priority">Priority</label>
+          <input
+            required
+            type="text"
+            placeholder="Priority"
+            {...register("priority")}
+            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
+            autoFocus
+          />
+          <label htmlFor="status">Status</label>
+          <input
+            required
+            type="text"
+            placeholder="Status"
+            {...register("status")}
+            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
+            autoFocus
           />
           <label htmlFor="date">Date</label>
           <input
