@@ -15,8 +15,16 @@ function Navbar() {
             <h1>Welcome {user.username}</h1>
             <li>
               <Link
+                to="/dependencies"
+                className="bg-indigo-500 px-2 py-1 rounded-md"
+              >
+                Dependencias
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/add-ticket"
-                className="bg-indigo-500 px-4 py-1 rounded-sm"
+                className="bg-indigo-500 px-2 py-1 rounded-md"
               >
                 Add Ticket
               </Link>
@@ -24,6 +32,7 @@ function Navbar() {
             <li>
               <Link
                 to="/"
+                className="bg-red-500 px-1 py-1 rounded-md"
                 onClick={() => {
                   logout();
                 }}
