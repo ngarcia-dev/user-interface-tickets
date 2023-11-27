@@ -71,7 +71,7 @@ function TicketFormPage() {
             required
             type="text"
             placeholder="Dependency"
-            {...register("dependency")}
+            {...register("dependency.name")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
@@ -80,7 +80,7 @@ function TicketFormPage() {
             required
             type="text"
             placeholder="Service"
-            {...register("service")}
+            {...register("service.name")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />

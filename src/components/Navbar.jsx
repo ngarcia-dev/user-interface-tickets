@@ -16,7 +16,7 @@ function Navbar() {
             <li>
               <Link
                 to="/dependencies"
-                className="bg-indigo-500 px-2 py-1 rounded-md"
+                className="bg-indigo-500 px-2 py-1 rounded-sm"
               >
                 Dependencias
               </Link>
@@ -24,7 +24,7 @@ function Navbar() {
             <li>
               <Link
                 to="/add-ticket"
-                className="bg-indigo-500 px-2 py-1 rounded-md"
+                className="bg-indigo-500 px-2 py-1 rounded-sm"
               >
                 Add Ticket
               </Link>
@@ -32,7 +32,7 @@ function Navbar() {
             <li>
               <Link
                 to="/"
-                className="bg-red-500 px-1 py-1 rounded-md"
+                className="bg-red-500 px-1 py-1 rounded-sm"
                 onClick={() => {
                   logout();
                 }}
