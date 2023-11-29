@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest } from "../api/auth";
+import { loginRequest, registerRequest, verifyTokenRequest, profileRequest } from "../api/auth";
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
@@ -44,6 +44,15 @@ export const AuthProvider = ({ children }) => {
         return setErrors(error.response.data);
       }
       setErrors([error.response.data.message]);
+    }
+  };
+
+  const getProfile = async () => {
+    try {
+      const res = await profileRequest();
+      setUser(res.data);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -97,6 +106,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signup,
         signin,
+        getProfile,
         logout,
         loading,
         user,

@@ -12,7 +12,9 @@ function Navbar() {
       <ul className="flex gap-x-2">
         {isAuthenticated ? (
           <>
-            <h1>Welcome {user.username}</h1>
+            <li>
+              <Link to="/profile">Welcome {user.username}</Link>
+            </li>
             <li>
               <Link
                 to="/dependencies"
