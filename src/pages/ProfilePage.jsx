@@ -49,16 +49,7 @@ function ProfilePage() {
             type="text"
             placeholder="Roles"
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            value={profileData.roles.map((role) => role.name).join(", ")}
-            readOnly
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            required
-            type="password"
-            placeholder="Password"
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            value={profileData.password}
+            value={profileData.role.map((role) => role.role.name)}
             readOnly
           />
         </form>

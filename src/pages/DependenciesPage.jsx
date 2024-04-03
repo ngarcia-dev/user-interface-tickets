@@ -14,7 +14,7 @@ function DependenciesPage() {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
       {dependencies.map((dependency) => (
-        <DependenciesCard dependency={dependency} key={dependency._id} />
+        <DependenciesCard dependency={dependency} key={dependency.id} />
       ))}
     </div>
   );

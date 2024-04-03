@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDependencies } from "../context/DependenciesContext";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -13,17 +13,14 @@ function DependencyFormPage() {
     useDependencies();
   const navigate = useNavigate();
   const params = useParams();
-  const [dependency, setDependency] = useState({ staff: [], services: [] });
 
   useEffect(() => {
     const loadDependency = async () => {
       if (params.id) {
         const loadedDependency = await getDependency(params.id);
-        setDependency(loadedDependency);
+        console.log(loadedDependency);
         setValue("name", loadedDependency.name);
-        setValue("email", loadedDependency.email);
-        setValue("staff", loadedDependency.staff);
-        setValue("services", loadedDependency.services);
+        setValue("description", loadedDependency.description);
       }
     };
 
@@ -58,31 +55,15 @@ function DependencyFormPage() {
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
-          <label htmlFor="email">Email</label>
+          <label htmlFor="description">Description</label>
           <input
             required
             type="text"
-            placeholder="Email"
-            {...register("email")}
+            placeholder="description"
+            {...register("description")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
-
-          {/* Mapeamos el array de staff */}
-          <label>Staff List</label>
-          <ul className="bg-zinc-700 text-white px-4 py-4 rounded-md my-2">
-            {dependency.staff.map((staffMember, index) => (
-              <li key={index}>{staffMember.email}</li>
-            ))}
-          </ul>
-
-          <label>Services List</label>
-          <ul className="bg-zinc-700 text-white px-4 py-4 rounded-md my-2">
-            {dependency.services.map((serviceCount, index) => (
-              <li key={index}>{serviceCount.name}</li>
-            ))}
-          </ul>
-
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"

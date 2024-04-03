@@ -25,14 +25,13 @@ function DependenciesCard({ dependency }) {
           </button> */}
           <Link
             className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-            to={`/dependencies/${dependency._id}`}
+            to={`/dependencies/${dependency.id}`}
           >
             <FontAwesomeIcon icon={faEdit} />
           </Link>
         </div>
       </header>
-      <p className="text-slate-300">{dependency.email}</p>
-      <p>{dayjs(dependency.date).utc().format("DD/MM/YYYY")}</p>
+      <p className="text-slate-300">{dependency.description}</p>
     </div>
   );
 }
