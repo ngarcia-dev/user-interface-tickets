@@ -20,7 +20,7 @@ Esta interfaz de usuario consume la [rest API][system-url] de un sistema de sopo
 
 ## Características principales
 
-- **Manage Tickets**: Obtén información detallada sobre cada ticket dirigido a tu depenendecia, sector interno o usuario, tales como titúlo, descripción, prioridad y estado.
+- **Manage Tickets**: Obtén información detallada sobre cada ticket dirigido a tu dependecia, sector interno o usuario, tales como título, descripción, prioridad y estado.
 - **Crear Tickets**: Permite a los usuarios de respectivos roles y sectores internos crear los pedidos necesarios a una dependencia y sector interno que ofrezca los servicios que atiendan su necesidad.
 <!-- - **Jerarquia de roles**: La aplicación tiene un sistema jerarquico  -->
 
