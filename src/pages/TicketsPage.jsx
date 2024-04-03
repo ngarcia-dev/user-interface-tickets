@@ -14,7 +14,7 @@ function TicketsPage() {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
       {tickets.map((ticket) => (
-        <TicketsCard ticket={ticket} key={ticket._id} />
+        <TicketsCard ticket={ticket} key={ticket.id} />
       ))}
     </div>
   );

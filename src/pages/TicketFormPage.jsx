@@ -20,11 +20,9 @@ function TicketFormPage() {
         console.log(ticket);
         setValue("title", ticket.title);
         setValue("description", ticket.description);
-        setValue("dependency", ticket.dependency);
-        setValue("service", ticket.service);
-        setValue("priority", ticket.priority);
-        setValue("status", ticket.status);
-        setValue("date", dayjs.utc(ticket.date).format("YYYY-MM-DD"));
+        setValue("dependency", ticket.dependencyDestId);
+        setValue("internalSec", ticket.internalSecDestId);
+        setValue("service", ticket.serviceProvidedId);
       }
     };
 
@@ -71,43 +69,25 @@ function TicketFormPage() {
             required
             type="text"
             placeholder="Dependency"
-            {...register("dependency.name")}
+            {...register("dependency")}
+            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
+            autoFocus
+          />
+          <label htmlFor="internalSec">InternalSec</label>
+          <input
+            type="text"
+            placeholder="InternalSec"
+            {...register("internalSec")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
           <label htmlFor="service">Service</label>
           <input
-            required
             type="text"
             placeholder="Service"
-            {...register("service.name")}
+            {...register("service")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
-          />
-          <label htmlFor="priority">Priority</label>
-          <input
-            required
-            type="text"
-            placeholder="Priority"
-            {...register("priority")}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            autoFocus
-          />
-          <label htmlFor="status">Status</label>
-          <input
-            required
-            type="text"
-            placeholder="Status"
-            {...register("status")}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            autoFocus
-          />
-          <label htmlFor="date">Date</label>
-          <input
-            required
-            type="date"
-            {...register("date")}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
           />
           <button
             type="submit"
