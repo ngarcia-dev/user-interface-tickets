@@ -33,6 +33,23 @@ function TicketsCard({ ticket }) {
       </header>
       <p className="text-slate-300">{ticket.description}</p>
       <p>{dayjs(ticket.date).utc().format("DD/MM/YYYY")}</p>
+      <div className="flex justify-end gap-x-2 pt-2">
+        <span
+          className="bg-blue-500 text-white px-4 py-1.5 rounded-full"
+          onClick={console.log(ticket)}
+        >
+          {ticket.executorTicket === null
+            ? "Not assigned"
+            : ticket.executorTicket.executorId}
+        </span>
+        <span
+          className={`${
+            ticket.status === "open" ? "bg-green-500" : "bg-orange-600"
+          } text-white px-4 py-1.5 rounded-full`}
+        >
+          {ticket.status}
+        </span>
+      </div>
     </div>
   );
 }
