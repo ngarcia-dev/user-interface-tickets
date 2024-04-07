@@ -11,7 +11,7 @@ function TicketsCard({ ticket }) {
   const { deleteTicket } = useTickets();
 
   return (
-    <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
+    <div className="bg-zinc-800 max-w-md w-full p-4 rounded-md">
       <header className="flex justify-between">
         <h1 className="text-2xl font-bold">{ticket.title}</h1>
         <div className="flex gap-x-2 items-center">
@@ -33,7 +33,7 @@ function TicketsCard({ ticket }) {
       </header>
       <p className="text-slate-300">{ticket.description}</p>
       <p>{dayjs(ticket.date).utc().format("DD/MM/YYYY")}</p>
-      <div className="flex justify-end gap-x-2 pt-2">
+      <div className="flex justify-end gap-x-2 pt-2 text-xs items-center">
         <span className="bg-blue-500 text-white px-4 py-1.5 rounded-full">
           {ticket.executorTicket === null
             ? "Not assigned"

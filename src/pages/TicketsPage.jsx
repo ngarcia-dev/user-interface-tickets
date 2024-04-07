@@ -12,7 +12,7 @@ function TicketsPage() {
   if (tickets.length === 0) return <h1>No tickets</h1>;
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
+    <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-2">
       {tickets.map((ticket) => (
         <TicketsCard ticket={ticket} key={ticket.id} />
       ))}

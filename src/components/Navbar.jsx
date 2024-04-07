@@ -6,10 +6,13 @@ function Navbar() {
 
   return (
     <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10 rounded-lg">
-      <Link to={isAuthenticated ? "/tickets" : "/login"}>
-        <h1 className="text-2xl font-bold">Ticket Manager</h1>
+      <Link
+        className="flex items-center"
+        to={isAuthenticated ? "/tickets" : "/login"}
+      >
+        <h1 className="text-2xl font-bold item">Ticket Manager</h1>
       </Link>
-      <ul className="flex gap-x-2">
+      <ul className="flex gap-x-2 flex-wrap gap-3 m-3">
         {isAuthenticated ? (
           <>
             <li>
