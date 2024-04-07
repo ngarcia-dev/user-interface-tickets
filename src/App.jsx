@@ -8,6 +8,7 @@ import DependenciesPage from "./pages/DependenciesPage";
 import TicketsFormPage from "./pages/TicketFormPage";
 import DependenciesFormPage from "./pages/DependencyFormPage";
 import ProfilePage from "./pages/ProfilePage";
+import NotFoundPage from "./pages/NotFoundPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { TicketProvider } from "./context/TicketsContext";
 import { DependencyProvider } from "./context/DependenciesContext";
@@ -26,15 +27,22 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
 
+                <Route path="*" element={<NotFoundPage />} />
                 <Route element={<ProtectedRoute />}>
                   <Route path="/tickets" element={<TicketsPage />} />
                   <Route path="/add-ticket" element={<TicketsFormPage />} />
                   <Route path="/tickets/:id" element={<TicketsFormPage />} />
 
                   <Route path="/dependencies" element={<DependenciesPage />} />
-                  <Route path="/add-dependency" element={<DependenciesFormPage />} />
-                  <Route path="/dependencies/:id" element={<DependenciesFormPage />} />
-                  
+                  <Route
+                    path="/add-dependency"
+                    element={<DependenciesFormPage />}
+                  />
+                  <Route
+                    path="/dependencies/:id"
+                    element={<DependenciesFormPage />}
+                  />
+
                   <Route path="/profile" element={<ProfilePage />} />
                 </Route>
               </Routes>
