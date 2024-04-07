@@ -20,9 +20,9 @@ function TicketFormPage() {
         console.log(ticket);
         setValue("title", ticket.title);
         setValue("description", ticket.description);
-        setValue("dependency", ticket.dependencyDestId);
-        setValue("internalSec", ticket.internalSecDestId);
-        setValue("service", ticket.serviceProvidedId);
+        setValue("dependencyDest", ticket.dependencyDestId);
+        setValue("internalSecDest", ticket.internalSecDestId);
+        setValue("serviceId", ticket.serviceProvidedId);
       }
     };
 
@@ -69,7 +69,7 @@ function TicketFormPage() {
             required
             type="text"
             placeholder="Dependency"
-            {...register("dependency")}
+            {...register("dependencyDest")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
@@ -77,7 +77,7 @@ function TicketFormPage() {
           <input
             type="text"
             placeholder="InternalSec"
-            {...register("internalSec")}
+            {...register("internalSecDest")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
@@ -85,7 +85,7 @@ function TicketFormPage() {
           <input
             type="text"
             placeholder="Service"
-            {...register("service")}
+            {...register("serviceId")}
             className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
             autoFocus
           />
