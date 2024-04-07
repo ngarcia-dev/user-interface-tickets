@@ -3,7 +3,6 @@ import { AuthProvider } from "./context/AuthContext";
 
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
 import TicketsPage from "./pages/TicketsPage";
 import DependenciesPage from "./pages/DependenciesPage";
 import TicketsFormPage from "./pages/TicketFormPage";
@@ -23,7 +22,7 @@ function App() {
             <main className="container mx-auto px-10">
               <Navbar />
               <Routes>
-                <Route path="/" element={<HomePage />} />
+                <Route path="/" element={<LoginPage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
 
