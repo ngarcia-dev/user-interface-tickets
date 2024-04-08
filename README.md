@@ -110,7 +110,7 @@ Esta interfaz de usuario consume la [rest API][system-url] de un sistema de sopo
 - [![React JS][react-badge]][react-url] - The library for web and native user interfaces.
 - [![Vite JS][vite-badge]][vite-url] - Get ready for a development environment that can finally catch up with you.
 - [![Tailwind CSS][tailwind-badge]][tailwind-url] - A utility-first CSS framework for rapidly building custom designs.
-- [![Fontawesome][fontawesome-badge]][fontawesome-url] - is the Internet's icon library and toolkit, used by millions of designers, developers, and content creators.
+- [![radix-ui][radix-ui-badge]][radix-ui-url] - An open source component library optimized for fast development, easy maintenance, and accessibility. Just import and go—no configuration required.
 
 [react-url]: https://reactjs.org/
 [react-badge]: https://img.shields.io/badge/React-000?style=for-the-badge&logo=react
@@ -118,8 +118,8 @@ Esta interfaz de usuario consume la [rest API][system-url] de un sistema de sopo
 [vite-badge]: https://img.shields.io/badge/vite-000?style=for-the-badge&logo=vite
 [tailwind-url]: https://tailwindcss.com/
 [tailwind-badge]: https://img.shields.io/badge/Tailwind-000?style=for-the-badge&logo=tailwindcss
-[fontawesome-url]: https://fontawesome.com/
-[fontawesome-badge]: https://img.shields.io/badge/fontawesome-000?style=for-the-badge&logo=fontawesome
+[radix-ui-url]: https://www.radix-ui.com/
+[radix-ui-badge]: https://img.shields.io/badge/radixui-000?style=for-the-badge&logo=radix-ui
 [contributors-shield]: https://img.shields.io/github/contributors/ngarcia-dev/user-interface-tickets.svg?style=for-the-badge
 [contributors-url]: https://github.com/ngarcia-dev/user-interface-tickets/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/ngarcia-dev/user-interface-tickets.svg?style=for-the-badge

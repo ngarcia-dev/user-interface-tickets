@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useTickets } from "../context/TicketsContext";
 import TicketsCard from "../components/TicketsCard";
 
+import { Grid } from "@radix-ui/themes";
+
 function TicketsPage() {
   const { getTickets, tickets } = useTickets();
 
@@ -12,10 +14,16 @@ function TicketsPage() {
   if (tickets.length === 0) return <h1>No tickets</h1>;
 
   return (
-    <div className="grid sm:grid-cols-3 md:grid-cols-4 gap-2">
-      {tickets.map((ticket) => (
-        <TicketsCard ticket={ticket} key={ticket.id} />
-      ))}
+    <div>
+      <Grid
+        columns={{ initial: "1", sm: "2", md: "3", lg: "4" }}
+        gap="3"
+        width="auto"
+      >
+        {tickets.map((ticket) => (
+          <TicketsCard ticket={ticket} key={ticket.id} />
+        ))}
+      </Grid>
     </div>
   );
 }
