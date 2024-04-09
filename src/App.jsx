@@ -29,8 +29,8 @@ function App() {
                   <Route path="/" element={<LoginPage />} />
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
-
                   <Route path="*" element={<NotFoundPage />} />
+
                   <Route element={<ProtectedRoute />}>
                     <Route path="/tickets" element={<TicketsPage />} />
                     <Route path="/add-ticket" element={<TicketsFormPage />} />
