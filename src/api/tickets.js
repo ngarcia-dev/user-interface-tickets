@@ -9,3 +9,5 @@ export const createTicketRequest = (ticket) => axios.post("/tickets", ticket);
 export const updateTicketRequest = (id, ticket) => axios.put(`/tickets/${id}`, ticket);
 
 export const deleteTicketRequest = (id) => axios.delete(`/tickets/${id}`);
+
+export const assignTicketRequest = (id, ticket) => axios.put(`/tickets/${id}/assign`, ticket);

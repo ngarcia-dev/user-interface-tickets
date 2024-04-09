@@ -5,6 +5,7 @@ import {
   getTicketRequest,
   getTicketsRequest,
   updateTicketRequest,
+  assignTicketRequest,
 } from "../api/tickets";
 
 const TicketContext = createContext();
@@ -63,6 +64,14 @@ export const TicketProvider = ({ children }) => {
     }
   };
 
+  const assignTicket = async (id, ticket) => {
+    try {
+      await assignTicketRequest(id, ticket);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <TicketContext.Provider
       value={{
@@ -72,6 +81,7 @@ export const TicketProvider = ({ children }) => {
         deleteTicket,
         getTicket,
         updateTicket,
+        assignTicket,
       }}
     >
       {children}
