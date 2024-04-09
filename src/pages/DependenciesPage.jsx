@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useDependencies } from "../context/DependenciesContext";
 import DependenciesCard from "../components/DependenciesCard";
 
+import { Grid } from "@radix-ui/themes";
+
 function DependenciesPage() {
   const { getDependencies, dependencies } = useDependencies();
 
@@ -12,10 +14,16 @@ function DependenciesPage() {
   if (dependencies.length === 0) return <h1>No dependencies</h1>;
 
   return (
-    <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
-      {dependencies.map((dependency) => (
-        <DependenciesCard dependency={dependency} key={dependency.id} />
-      ))}
+    <div>
+      <Grid
+        columns={{ initial: "1", sm: "2", md: "3", lg: "4" }}
+        gap="3"
+        width="auto"
+      >
+        {dependencies.map((dependency) => (
+          <DependenciesCard dependency={dependency} key={dependency.id} />
+        ))}
+      </Grid>
     </div>
   );
 }
