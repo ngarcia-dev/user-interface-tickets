@@ -14,7 +14,7 @@ function DependenciesCard({ dependency }) {
         <Heading>{dependency.name}</Heading>
         <Flex gap="3">
           <Link to={`/dependencies/${dependency.id}`}>
-            <Button variant="outline" className="hover:cursor-pointer" >
+            <Button variant="outline" className="hover:cursor-pointer">
               <EyeOpenIcon />
             </Button>
           </Link>
@@ -28,9 +28,7 @@ function DependenciesCard({ dependency }) {
       </Flex>
       <Flex justify="between">
         {dependency.internalSec.map((i) => (
-          <Flex>
-            <Badge key={i.id}>{i.name}</Badge>
-          </Flex>
+          <Badge key={i.id}>{i.name}</Badge>
         ))}
       </Flex>
     </Card>
