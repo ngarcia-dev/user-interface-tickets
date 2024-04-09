@@ -1,7 +1,7 @@
 import { useTickets } from "../context/TicketsContext";
 import { Link } from "react-router-dom";
 import { Card, Heading, Text, Badge, Flex, Button } from "@radix-ui/themes";
-import { Pencil2Icon, TrashIcon } from "@radix-ui/react-icons";
+import { OpenInNewWindowIcon, TrashIcon } from "@radix-ui/react-icons";
 
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
@@ -26,7 +26,7 @@ function TicketsCard({ ticket }) {
           </Button>
           <Link to={`/tickets/${ticket.id}`}>
             <Button className="hover:cursor-pointer">
-              <Pencil2Icon />
+              <OpenInNewWindowIcon />
             </Button>
           </Link>
         </Flex>
@@ -39,9 +39,7 @@ function TicketsCard({ ticket }) {
             {ticket.status}
           </Badge>
           <Badge color={ticket.executorTicket === null ? "violet" : "blue"}>
-            {ticket.executorTicket === null
-              ? "Not assigned"
-              : ticket.executorTicket.executorId}
+            {ticket.executorTicket === null ? "Not assigned" : "Assigned"}
           </Badge>
         </Flex>
       </Flex>
