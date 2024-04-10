@@ -33,7 +33,7 @@ function TicketsCard({ ticket }) {
       </Flex>
       <Text>{ticket.description}</Text>
       <Flex justify="between">
-        <Text>{dayjs(ticket.date).utc().format("DD/MM/YYYY")}</Text>
+        <Text>{dayjs(ticket.updatedAt).utc().format("DD/MM/YYYY HH:mm")}</Text>
         <Flex gap="3">
           <Badge color={ticket.status === "open" ? "green" : "red"}>
             {ticket.status}
