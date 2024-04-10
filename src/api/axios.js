@@ -1,8 +1,8 @@
 import axios from "axios";
+import { API_URL } from "../config.js";
 
 const instance = axios.create({
-  // TODO: Si es de pasar a production e de ingrear la ip del servidor donde se encuentra el backend
-  baseURL: "http://localhost:3000/api",
+  baseURL: API_URL,
   withCredentials: true,
 });
 
