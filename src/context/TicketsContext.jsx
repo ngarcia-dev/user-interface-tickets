@@ -34,14 +34,15 @@ export const TicketProvider = ({ children }) => {
 
   const createTicket = async (ticket) => {
     const res = await createTicketRequest(ticket);
-    console.log(res);
+    if (res.status === 201) setTickets([...tickets, res.data]);
+    console.log(res.data);
   };
 
   const deleteTicket = async (id) => {
     try {
       const res = await deleteTicketRequest(id);
       if (res.status === 204)
-        setTickets(tickets.filter((ticket) => ticket._id !== id));
+        setTickets(tickets.filter((ticket) => ticket.id !== id));
     } catch (error) {
       console.log(error);
     }
