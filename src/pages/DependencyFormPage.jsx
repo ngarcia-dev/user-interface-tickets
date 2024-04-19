@@ -3,12 +3,20 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDependencies } from "../context/DependenciesContext";
 import { useEffect } from "react";
 
+import { Form, FormField, FormControl, Label } from "@radix-ui/react-form";
+import { Button, Flex, Card } from "@radix-ui/themes";
+
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
 
 function DependencyFormPage() {
-  const { register, handleSubmit, setValue } = useForm();
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm();
   const { createDependency, getDependency, updateDependency } =
     useDependencies();
   const navigate = useNavigate();
@@ -17,10 +25,9 @@ function DependencyFormPage() {
   useEffect(() => {
     const loadDependency = async () => {
       if (params.id) {
-        const loadedDependency = await getDependency(params.id);
-        console.log(loadedDependency);
-        setValue("name", loadedDependency.name);
-        setValue("description", loadedDependency.description);
+        const dependency = await getDependency(params.id);
+        setValue("name", dependency.name);
+        setValue("description", dependency.description);
       }
     };
 
@@ -43,36 +50,68 @@ function DependencyFormPage() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        <form onSubmit={onSubmit}>
-          <label htmlFor="name">Name</label>
-          <input
-            required
-            type="text"
-            placeholder="Name"
-            {...register("name")}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            autoFocus
-          />
-          <label htmlFor="description">Description</label>
-          <input
-            required
-            type="text"
-            placeholder="description"
-            {...register("description")}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            autoFocus
-          />
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md"
-          >
-            Save
-          </button>
-        </form>
-      </div>
-    </div>
+    <Flex align="center" justify="center" className="h-[calc(100vh-300px)]">
+      <Card className="max-w-md w-full p-10">
+        <Form onSubmit={onSubmit}>
+          <FormField>
+            <Label htmlFor="name" className="block">
+              Name
+            </Label>
+            <FormControl
+              placeholder="Name"
+              {...register("name", {
+                required: {
+                  value: true,
+                  message: "El nombre es requerido",
+                },
+              })}
+              className="w-full py-4 px-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-6)",
+              }}
+              autoFocus
+            />
+            {errors.name && (
+              <span className="text-sm text-red-600">
+                {errors.name.message}
+              </span>
+            )}
+          </FormField>
+          <FormField>
+            <Label htmlFor="description" className="block">
+              Description
+            </Label>
+            <FormControl
+              placeholder="Description"
+              {...register("description", {
+                required: {
+                  value: true,
+                  message: "La descripción es requerida",
+                },
+              })}
+              className="w-full py-4 px-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-6)",
+              }}
+            />
+            {errors.description && (
+              <span className="text-sm text-red-600">
+                {errors.description.message}
+              </span>
+            )}
+          </FormField>
+          <Flex justify="start">
+            <Button size="2" className="hover:cursor-pointer w-32">
+              Save
+            </Button>
+          </Flex>
+        </Form>
+      </Card>
+    </Flex>
   );
 }
 
