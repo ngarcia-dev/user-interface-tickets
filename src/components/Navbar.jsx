@@ -17,6 +17,7 @@ function Navbar() {
         style={{
           backgroundColor: "var(--gray-a2)",
           borderRadius: "var(--radius-3)",
+          border: "1px solid var(--gray-6)",
         }}
       >
         <Link to={isAuthenticated ? "/tickets" : "/login"}>
