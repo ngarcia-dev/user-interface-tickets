@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { profileRequest } from "../api/auth";
 
+import { Form, FormField, FormControl, Label } from "@radix-ui/react-form";
+import { Flex, Card } from "@radix-ui/themes";
+
 function ProfilePage() {
   const [profileData, setProfileData] = useState(null);
 
@@ -22,39 +25,64 @@ function ProfilePage() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        <form>
-          <label htmlFor="username">Username</label>
-          <input
-            required
-            type="text"
-            placeholder="Username"
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            value={profileData.username}
-            readOnly
-          />
-          <label htmlFor="email">Email</label>
-          <input
-            required
-            type="email"
-            placeholder="Email"
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            value={profileData.email}
-            readOnly
-          />
-          <label htmlFor="roles">Roles</label>
-          <input
-            required
-            type="text"
-            placeholder="Roles"
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            value={profileData.role.map((role) => role.role.name)}
-            readOnly
-          />
-        </form>
-      </div>
-    </div>
+    <Flex align="center" justify="center" className="h-[calc(100vh-100px)]">
+      <Card className="max-w-md w-full p-10">
+        <Form>
+          <FormField>
+            <Label htmlFor="username" className="block">
+              Username
+            </Label>
+            <FormControl
+              required
+              type="text"
+              placeholder="Username"
+              className="w-full px-4 py-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-6)",
+              }}
+              value={profileData.username}
+              readOnly
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="email" className="block">
+              Email
+            </Label>
+            <FormControl
+              required
+              type="email"
+              placeholder="Email"
+              className="w-full px-4 py-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-6)",
+              }}
+              value={profileData.email}
+              readOnly
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="roles">Roles</Label>
+            <FormControl
+              required
+              type="text"
+              placeholder="Roles"
+              className="w-full px-4 py-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-6)",
+              }}
+              value={profileData.role.map((role) => role.role.name)}
+              readOnly
+            />
+          </FormField>
+        </Form>
+      </Card>
+    </Flex>
   );
 }
 
