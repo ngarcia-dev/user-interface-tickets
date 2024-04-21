@@ -33,7 +33,6 @@ function ProfilePage() {
               Username
             </Label>
             <FormControl
-              required
               type="text"
               placeholder="Username"
               className="w-full px-4 py-4 my-2"
@@ -51,7 +50,6 @@ function ProfilePage() {
               Email
             </Label>
             <FormControl
-              required
               type="email"
               placeholder="Email"
               className="w-full px-4 py-4 my-2"
@@ -67,7 +65,6 @@ function ProfilePage() {
           <FormField>
             <Label htmlFor="roles">Roles</Label>
             <FormControl
-              required
               type="text"
               placeholder="Roles"
               className="w-full px-4 py-4 my-2"
