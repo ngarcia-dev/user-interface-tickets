@@ -4,6 +4,16 @@ import { useTickets } from "../context/TicketsContext";
 import { useDependencies } from "../context/DependenciesContext";
 import { useEffect, useState } from "react";
 
+import {
+  Form,
+  FormField,
+  FormControl,
+  Label,
+  FormMessage,
+} from "@radix-ui/react-form";
+import * as Select from "@radix-ui/react-select";
+import { Button, Flex, Card, TextArea } from "@radix-ui/themes";
+
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 dayjs.extend(utc);
@@ -88,134 +98,171 @@ function TicketFormPage() {
   });
 
   return (
-    <div className="flex h-[calc(100vh-100px)] items-center justify-center">
-      <div className="bg-zinc-800 max-w-md w-full p-10 rounded-md">
-        <form onSubmit={onSubmit}>
-          <label htmlFor="title" className="block">
-            Title
-          </label>
-          <input
-            type="text"
-            placeholder="title"
-            {...register("title", {
-              required: {
-                value: true,
-                message: "No puede estar vacío",
-              },
-              minLength: {
-                value: 5,
-                message: "No menos de 5 caracteres",
-              },
-              maxLength: {
-                value: 35,
-                message: "No más de 35 caracteres",
-              },
-            })}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            autoFocus
-          />
-          {errors.title && (
-            <span className="text-sm text-red-600">{errors.title.message}</span>
-          )}
-          <label htmlFor="description" className="block">
-            Description
-          </label>
-          <textarea
-            rows="3"
-            placeholder="Description"
-            {...register("description")}
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-          />
-          <label htmlFor="dependency" className="block">
-            Dependency
-          </label>
-          <select
-            id="dependencyDest"
-            className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-            {...register("dependencyDest", {
-              required: { value: true, message: "Seleccione una Dependencia" },
-            })}
-          >
-            <option value="">Selecciona una Dependencia</option>
-            {dependencies.map((dependency) => (
-              <option key={dependency.id} value={dependency.id}>
-                {dependency.name}
-              </option>
-            ))}
-          </select>
-          {errors.dependencyDest && (
-            <span className="text-sm text-red-600">
-              {errors.dependencyDest.message}
-            </span>
-          )}
+    <Flex align="center" justify="center" className="h-[calc(100vh-100px)]">
+      <Card className="max-w-md w-full p-10">
+        <Form onSubmit={onSubmit}>
+          <FormField>
+            <Label htmlFor="title" className="block">
+              Title
+            </Label>
+            <FormControl
+              type="text"
+              placeholder="Title"
+              {...register("title", {
+                required: {
+                  value: true,
+                  message: "No puede estar vacío",
+                },
+                minLength: {
+                  value: 5,
+                  message: "No menos de 5 caracteres",
+                },
+                maxLength: {
+                  value: 35,
+                  message: "No más de 35 caracteres",
+                },
+              })}
+              className="w-full px-5 py-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-8)",
+              }}
+              autoFocus
+            />
+            {errors.title && (
+              <span className="text-sm text-red-600">
+                {errors.title.message}
+              </span>
+            )}
+          </FormField>
+          <FormField>
+            <Label htmlFor="description" className="block">
+              Description
+            </Label>
+            <TextArea
+              rows="3"
+              placeholder="Description"
+              {...register("description")}
+              className="w-full px-4 py-4 my-2"
+              style={{
+                background: "var(--gray-a2)",
+                borderRadius: "var(--radius-3)",
+              }}
+            />
+          </FormField>
+          <FormField>
+            <Label htmlFor="dependency" className="block">
+              Dependency
+            </Label>
+            <select
+              id="dependencyDest"
+              name="dependencyDest"
+              className="w-full bg-zinc-800 text-white px-4 py-4 my-2"
+              style={{
+                borderRadius: "var(--radius-3)",
+                border: "1px solid var(--gray-8)",
+              }}
+              {...register("dependencyDest", {
+                required: {
+                  value: true,
+                  message: "Seleccione una Dependencia",
+                },
+              })}
+            >
+              <option value="">Selecciona una Dependencia</option>
+              {dependencies.map((dependency) => (
+                <option key={dependency.id} value={dependency.id}>
+                  {dependency.name}
+                </option>
+              ))}
+            </select>
+            {errors.dependencyDest && (
+              <FormMessage className="text-sm text-red-600">
+                {errors.dependencyDest.message}
+              </FormMessage>
+            )}
+          </FormField>
 
           {dependencyDest && (
             <>
-              <label htmlFor="internalSecDest" className="block">
-                Sector Interno
-              </label>
-              <select
-                id="internalSecDest"
-                className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-                {...register("internalSecDest", {
-                  required: {
-                    value: true,
-                    message: "Seleccione un Sector Interno",
-                  },
-                })}
-              >
-                <option value="">Selecciona un Sector Interno</option>
-                {dependencyDest.internalSec.map((internalSec) => (
-                  <option key={internalSec.id} value={internalSec.id}>
-                    {internalSec.name}
-                  </option>
-                ))}
-              </select>
-              {errors.internalSecDest && (
-                <span className="text-sm text-red-600">
-                  {errors.internalSecDest.message}
-                </span>
-              )}
+              <FormField>
+                <Label htmlFor="internalSecDest" className="block">
+                  Sector Interno
+                </Label>
+                <select
+                  id="internalSecDest"
+                  name="internalSecDest"
+                  className="w-full bg-zinc-800 text-white px-4 py-4 my-2"
+                  style={{
+                    borderRadius: "var(--radius-3)",
+                    border: "1px solid var(--gray-8)",
+                  }}
+                  {...register("internalSecDest", {
+                    required: {
+                      value: true,
+                      message: "Seleccione un Sector Interno",
+                    },
+                  })}
+                >
+                  <option value="">Selecciona un Sector Interno</option>
+                  {dependencyDest.internalSec.map((internalSec) => (
+                    <option key={internalSec.id} value={internalSec.id}>
+                      {internalSec.name}
+                    </option>
+                  ))}
+                </select>
+                {errors.internalSecDest && (
+                  <FormMessage className="text-sm text-red-600">
+                    {errors.internalSecDest.message}
+                  </FormMessage>
+                )}
+              </FormField>
 
               {internalSecDest && (
                 <>
-                  <label htmlFor="serviceId">Service</label>
-                  <select
-                    id="serviceId"
-                    className="w-full bg-zinc-700 text-white px-4 py-4 rounded-md my-2"
-                    {...register("serviceId", {
-                      required: {
-                        value: true,
-                        message: "Seleccione un Servicio",
-                      },
-                    })}
-                  >
-                    <option value="">Selecciona un Servicio</option>
-                    {internalSecDest.service.map((service) => (
-                      <option key={service.id} value={service.id}>
-                        {service.name}
-                      </option>
-                    ))}
-                  </select>
-                  {errors.serviceId && (
-                    <span className="text-sm text-red-600">
-                      {errors.serviceId.message}
-                    </span>
-                  )}
+                  <FormField>
+                    <Label htmlFor="serviceId">Service</Label>
+                    <select
+                      id="serviceId"
+                      name="serviceId"
+                      className="w-full bg-zinc-800 text-white px-4 py-4 my-2"
+                      style={{
+                        borderRadius: "var(--radius-3)",
+                        border: "1px solid var(--gray-8)",
+                      }}
+                      {...register("serviceId", {
+                        required: {
+                          value: true,
+                          message: "Seleccione un Servicio",
+                        },
+                      })}
+                    >
+                      <option value="">Selecciona un Servicio</option>
+                      {internalSecDest.service.map((service) => (
+                        <option key={service.id} value={service.id}>
+                          {service.name}
+                        </option>
+                      ))}
+                    </select>
+                    {errors.serviceId && (
+                      <FormMessage className="text-sm text-red-600">
+                        {errors.serviceId.message}
+                      </FormMessage>
+                    )}
+                  </FormField>
                 </>
               )}
             </>
           )}
-
-          <button
-            type="submit"
-            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md block"
-          >
-            Save
-          </button>
-        </form>
-      </div>
-    </div>
+          <Flex justify="start">
+            <Button size="2" className="hover:cursor-pointer w-32">
+              Save
+            </Button>
+          </Flex>
+        </Form>
+      </Card>
+    </Flex>
   );
 }
 
