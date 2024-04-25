@@ -60,20 +60,16 @@ function Navbar() {
                   </Link>
                 </Box>
                 <Box>
-                  <Link
-                    to="/"
+                  <Button
                     onClick={() => {
                       logout();
                     }}
+                    className="hover:cursor-pointer"
+                    color="red"
+                    size={{ initial: "1", sm: "2" }}
                   >
-                    <Button
-                      className="hover:cursor-pointer"
-                      color="red"
-                      size={{ initial: "1", sm: "2" }}
-                    >
-                      <ExitIcon />
-                    </Button>
-                  </Link>
+                    <ExitIcon />
+                  </Button>
                 </Box>
               </>
             ) : (

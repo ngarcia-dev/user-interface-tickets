@@ -1,5 +1,11 @@
 import { createContext, useState, useContext, useEffect } from "react";
-import { loginRequest, registerRequest, verifyTokenRequest, profileRequest } from "../api/auth";
+import {
+  loginRequest,
+  logoutRequest,
+  registerRequest,
+  verifyTokenRequest,
+  profileRequest,
+} from "../api/auth";
 import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
@@ -56,7 +62,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await logoutRequest();
     Cookies.remove("token");
     setIsAuthenticated(false);
     setUser(null);
