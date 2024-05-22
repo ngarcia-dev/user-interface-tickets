@@ -6,6 +6,8 @@ import { Theme, ThemePanel } from "@radix-ui/themes";
 import RegisterPage from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import TicketsPage from "./pages/TicketsPage";
+import TicketsInteralSecPage from "./pages/TicketsInternalSecPage";
+import TicketsDependencyPage from "./pages/TicketsDependencyPage";
 import DependenciesPage from "./pages/DependenciesPage";
 import TicketsFormPage from "./pages/TicketFormPage";
 import DependenciesFormPage from "./pages/DependencyFormPage";
@@ -33,6 +35,14 @@ function App() {
 
                   <Route element={<ProtectedRoute />}>
                     <Route path="/tickets" element={<TicketsPage />} />
+                    <Route
+                      path="/tickets-internalsec"
+                      element={<TicketsInteralSecPage />}
+                    />
+                    <Route
+                      path="/tickets-dependency"
+                      element={<TicketsDependencyPage />}
+                    />
                     <Route path="/add-ticket" element={<TicketsFormPage />} />
                     <Route path="/tickets/:id" element={<TicketsFormPage />} />
 
