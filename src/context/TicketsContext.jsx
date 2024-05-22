@@ -4,6 +4,8 @@ import {
   deleteTicketRequest,
   getTicketRequest,
   getTicketsRequest,
+  getTicketsDependencyRequest,
+  getTicketsInternalSecRequest,
   updateTicketRequest,
   assignTicketRequest,
 } from "../api/tickets";
@@ -26,6 +28,24 @@ export const TicketProvider = ({ children }) => {
   const getTickets = async () => {
     try {
       const res = await getTicketsRequest();
+      setTickets(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getTicketsInternalSec = async () => {
+    try {
+      const res = await getTicketsInternalSecRequest();
+      setTickets(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getTicketsDependency = async () => {
+    try {
+      const res = await getTicketsDependencyRequest();
       setTickets(res.data);
     } catch (error) {
       console.error(error);
@@ -78,6 +98,8 @@ export const TicketProvider = ({ children }) => {
       value={{
         tickets,
         getTickets,
+        getTicketsInternalSec,
+        getTicketsDependency,
         createTicket,
         deleteTicket,
         getTicket,
