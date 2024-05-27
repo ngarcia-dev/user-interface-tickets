@@ -11,7 +11,6 @@ import {
   Label,
   FormMessage,
 } from "@radix-ui/react-form";
-import * as Select from "@radix-ui/react-select";
 import { Button, Flex, Card, TextArea } from "@radix-ui/themes";
 
 import dayjs from "dayjs";
